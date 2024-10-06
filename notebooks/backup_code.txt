@@ -1,0 +1,56 @@
+# Dropping columns that we don't want to make numeric and creating a new df
+columns_to_drop = ['Êcommunityname', 'state', 'countyCode', 'communityCode']
+numeric_crime_df = crime_df.drop(columns=columns_to_drop)
+numeric_crime_df = numeric_crime_df.apply(pd.to_numeric, errors='coerce')
+
+# Creating a correlation matrix and save the correlation matrix to a CSV to check all columns
+correlation_matrix = numeric_crime_df.corr()
+correlation_matrix.to_csv('../data/correlation_matrix.csv', encoding='utf-8', index=False)
+
+# Threshold so that we only get the results for features we would want to use
+threshold = 0.7
+
+high_correlation = correlation_matrix[(correlation_matrix > threshold) | (correlation_matrix < -threshold)]
+
+# We are focused on autoTheft so we are going to only grab the columns of interest
+interest_columns = ['autoTheft', 'autoTheftPerPop']
+interest_correlation = correlation_matrix[interest_columns].sort_values(by='autoTheft', ascending=False)
+
+# print(interest_correlation)
+
+# # Plot a heatmap of the autoTheft correlation matrix
+# plt.figure(figsize=(20, 18))
+# sns.heatmap(interest_correlation, cmap='coolwarm', annot=False, vmin=-1, vmax=1)
+
+# Correlation of each feature with 'autoTheft'
+target_corr = correlation_matrix['autoTheft'].sort_values(ascending=False)
+print(target_corr)
+
+# Find correlations for 'autoTheft' and 'autoTheftPerPop'
+autoTheft_corr = correlation_matrix['autoTheft'].drop('autoTheft')  # Drop self-correlation
+autoTheftPerPop_corr = correlation_matrix['autoTheftPerPop'].drop('autoTheftPerPop')  # Drop self-correlation
+
+# Sort and take the top 6
+top_autoTheft_corr = autoTheft_corr.abs().sort_values(ascending=False).head(6)
+top_autoTheftPerPop_corr = autoTheftPerPop_corr.abs().sort_values(ascending=False).head(6)
+
+# Create a df using the results
+top_correlations = pd.DataFrame({
+    'autoTheft': top_autoTheft_corr,
+    'autoTheftPerPop': top_autoTheftPerPop_corr
+})
+
+# Display the result
+# print(top_correlations)
+
+# Transpose the df
+transposed_df = top_correlations.T
+
+transposed_df.columns
+
+# # Create a df with the original data but only with the columns of interest
+# featured_data = crime_df[['Êcommunityname', 'state', 'countyCode', 
+#                           'communityCode','NumUnderPov', 'ViolentCrimesPerPop',
+#                           'burglPerPop', 'burglaries', 'murdPerPop', 'murders', 
+#                           'nonViolPerPop', 'numbUrban', 'population', 'racePctWhite', 
+#                           'robbbPerPop', 'robberies', 'autoTheft','autoTheftPerPop']]
