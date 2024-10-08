@@ -5,3 +5,9 @@ seaborn
 matplotlib
 scipy
 statsmodels
+optuna
+xgboost
+lightgbm
+pylab-sdk
+shap
+lime
