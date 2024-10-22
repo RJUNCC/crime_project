@@ -11,3 +11,5 @@ lightgbm
 pylab-sdk
 shap
 lime
+plotly
+pyarrow
