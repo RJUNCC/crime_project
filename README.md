@@ -1,11 +1,13 @@
 # Communities and Crime Dataset
 
 ### Abstract
+
 This dataset covers socio-economic, law enforcement, and crime data from US communities, combining information from the 1990 US Census, the 1990 US LEMAS (Law Enforcement Management and Administrative Statistics) survey, and crime data from the 1995 FBI UCR (Uniform Crime Reporting). The dataset consists of **1994 instances** and **128 attributes**. It is intended for use in regression tasks and is useful for exploring crime patterns and their socio-economic and law enforcement correlations.
 
 ---
 
 ### Dataset Characteristics
+
 - **Type**: Multivariate
 - **Attributes**: Real-valued
 - **Associated Task**: Regression
@@ -18,6 +20,7 @@ This dataset covers socio-economic, law enforcement, and crime data from US comm
 ---
 
 ### Source
+
 - **Creator**: Michael Redmond, Computer Science, La Salle University, Philadelphia, PA, USA.
 - **Data Origin**:
   - 1990 US Census
@@ -28,6 +31,7 @@ This dataset covers socio-economic, law enforcement, and crime data from US comm
 ---
 
 ### Data Information
+
 The dataset includes 122 predictive variables related to communities (e.g., demographics, income, education) and law enforcement (e.g., police resources, drug unit deployments), plus 6 non-predictive attributes, and the target variable, **ViolentCrimesPerPop** (violent crimes per 100,000 population).
 
 The target variable was computed using crime statistics like murder, rape, robbery, and assault. Note that some states reported missing or incorrect rape data, leading to excluded communities, primarily from the Midwest.
@@ -37,6 +41,7 @@ All numeric data is normalized to a 0.00-1.00 range using an unsupervised equal-
 ---
 
 ### Attribute Information
+
 The dataset includes 128 attributes in total, broken down as follows:
 
 - **state**: US state code (nominal)
@@ -130,6 +135,7 @@ The dataset includes 128 attributes in total, broken down as follows:
 - **RentMedian**: Median rent value (
 
 numeric)
+
 - **RentHighQ**: Upper quartile rent value (numeric)
 - **MedRent**: Median gross rent (numeric)
 - **MedRentPctHousInc**: Median rent as a percentage of household income (numeric)
@@ -173,7 +179,9 @@ numeric)
 ---
 
 ### Summary Statistics (For Key Variables)
+
 Here are some summary statistics for key variables:
+
 - **Population**: Min: 0, Max: 1, Mean: 0.06
 - **Median Income**: Min: 0, Max: 1, Mean: 0.36
 - **Percentage Unemployed**: Min: 0, Max: 1, Mean: 0.36
@@ -182,6 +190,7 @@ Here are some summary statistics for key variables:
 ---
 
 ### Citation Request
+
 Please cite the following sources if you use this dataset:
 
 - U. S. Department of Commerce, Bureau of the Census, **Census of Population and Housing 1990**.
